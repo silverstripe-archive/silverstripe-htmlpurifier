@@ -15,7 +15,7 @@
  * Note that these features in TinyMCE whitelists are not supported:
  *
  * - Wildcards (on elements or attributes)
- * - Default and Forced attribute values
+ * 
  */
 class HtmlPurifierSanitiser extends HtmlEditorSanitiser {
 
@@ -102,6 +102,10 @@ class HtmlPurifierSanitiser extends HtmlEditorSanitiser {
 	}
 
 	public function sanitise (SS_HTMLValue $html) {
+		// First we use the base sanitiser, which does element renaming and attribute defaults / forcing
+		parent::sanitise($html);
+
+		// Then we re-run through purifier
 		$dirty = $html->getContent();
 
 		$purifier = new HTMLPurifier($this->purifierConfig);

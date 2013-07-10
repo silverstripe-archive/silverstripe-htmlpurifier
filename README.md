@@ -12,7 +12,6 @@ HTMLPurifier, which is a library designed specifically for filtering HTML to rem
 Note that these features in TinyMCE whitelists are not supported:
 
  - Wildcards (on elements or attributes)
- - Default and Forced attribute values
 
 ## Maintainer Contact
 
