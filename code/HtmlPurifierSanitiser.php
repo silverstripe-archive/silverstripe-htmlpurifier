@@ -54,6 +54,8 @@ class HtmlPurifierSanitiser extends HtmlEditorSanitiser {
 		$allowedAttributes = array();
 
 		foreach($this->elements as $el => $eldef) {
+			if ($el == '@') continue;
+
 			$allowedElements[$el] = true;
 			foreach($eldef->attributes as $attr => $attrdef) {
 				$allowedAttributes["$el.$attr"] = true;
@@ -72,6 +74,8 @@ class HtmlPurifierSanitiser extends HtmlEditorSanitiser {
 				$html4 = HTMLPurifier_Config::createDefault()->getHTMLDefinition(false, false);
 
 				foreach($this->elements as $el => $eldef) {
+					if ($el == '@') continue;
+
 					if(!isset($html4->info[$el])) {
 						$def->addElement($el, 'Inline', 'Flow', '', array());
 					}
